@@ -18,6 +18,9 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     public bool ChefeNaoTomarTiro; // variavel criada com o intuito de fazer que o chefe não continue tendo colisoes entre bala e chefe durante a animação de morte do chefe
     public GameObject KitMedicoPrefab; //variavel que receberá o kitmedic no inspector
     public Slider SliderVidaChefe; // variavel pra receber o slide da vida do chefe la no inspector
+    public Image ImagemSlider; //variavel que irá receber o fill do slider lá no inspector
+    public Color CorDaVidaMaxima, CorDaVidaMinima; //definindo duas váriaves para receber as cores da vida // já vem como preta tem que mudar no inspector
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel
         ChefeNaoTomarTiro = false; // quando o chefe é iniciado nós marcamos a variavel como falsa para que o chefe possa tomar tiro, que aconteça colisao entre a bala e o chefe
         SliderVidaChefe.maxValue = statusChefe.VidaInicial; //já seta o valor maximo da slider como o valor da vida inicial do chefe
         AtualizarInterface (); // atualiza a interface com a vida do chefe senão o valor maximo muda, mas o valor atual n muda
+
     }
 
     // Update is called once per frame
@@ -93,6 +97,9 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     void AtualizarInterface ()
     {
         SliderVidaChefe.value = statusChefe.Vida; //muda a slider de acordo com a vida do chefe
+        float porcentagemDaVida = (float) statusChefe.Vida / statusChefe.VidaInicial; // define quantos porcentos de vida o chefe ainda tem //(float) coloca para converter o resultado em float, pois os dois numeros são inteiros
+        Color corDaVida = Color.Lerp(CorDaVidaMinima, CorDaVidaMaxima, porcentagemDaVida); //Color.lerp faz uma interpolação em duas cores baseadas em uma porcentagem // salvamos na variavel corDaVida o resultado
+        ImagemSlider.color  = corDaVida; //muda a cor da slider com a cordavida // desativar background da slider pra ficar a barrinha diminuindo
     }
 
 }

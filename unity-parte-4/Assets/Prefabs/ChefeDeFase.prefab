@@ -129,7 +129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5a7e01d8f3e19b047990a673e25d530d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd4e25bb424960748b1eb3ec49cf2756, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -573,7 +573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9222274539952266674
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1065,6 +1065,9 @@ MonoBehaviour:
   KitMedicoPrefab: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
     type: 3}
   SliderVidaChefe: {fileID: 3455208138947648941}
+  ImagemSlider: {fileID: 4112994972975111079}
+  CorDaVidaMaxima: {r: 0.34117648, g: 1, b: 0, a: 1}
+  CorDaVidaMinima: {r: 1, g: 0.32941177, b: 0.32156864, a: 1}
 --- !u!1 &7984745334537397811
 GameObject:
   m_ObjectHideFlags: 0
