@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI; // usado para buscar a biblioteca de UI, no caso pra usar Slider
 using UnityEngine.SceneManagement; // é utilizado quando tem controle de scena, no nosso caso iremos reiniciar o jogo quando aparecer a tela de game over
 using TMPro;
+using System;
 
 // script ligado ao objeto canvas
+
 
 
 public class ControlaInterface : MonoBehaviour
@@ -25,6 +27,8 @@ public class ControlaInterface : MonoBehaviour
     private int quantidadeDeZumbisMortos; //variavel pra controlar a quantindade de zumbis mortos
 
     public Text TextoQuantidadeDeZumbisMortos; //vai receber o textozumbisMortos la no inspector
+
+    public Text TextoChefeAparece; //vai receber o textochefeaparece la no inspector
 
     // Start is called before the first frame updateS
     void Start()
@@ -88,4 +92,29 @@ public class ControlaInterface : MonoBehaviour
         SceneManager.LoadScene("game"); //da load na cena do jogo "game"
     }
 
+    public void AparecerTextoChefeCriado ()
+    {
+        StartCoroutine(DesaparecerTexto(1, TextoChefeAparece));
+    }
+    IEnumerator DesaparecerTexto(float tempoDeSumico, Text textoParaSumir)
+    {
+        textoParaSumir.gameObject.SetActive(true); //ativando o texto
+        Color corTexto = textoParaSumir.color; //definindo uma variavel pra controlar a cor do texto
+        corTexto.a = 1; // (a = alpha) definindo a transparencia do texto como 100% quando ele aparecer
+        textoParaSumir.color = corTexto; // textoparasumir recebe a cor nova
+        yield return new WaitForSeconds(1); // mostrar o texto por um segundo
+        float contador = 0; // contador pra contar o tempo que está passando
+        while (textoParaSumir.color.a > 0) // enquanto a transparencia do texto for maior que 0
+        {
+            contador += Time.deltaTime / tempoDeSumico; //cria um contador em porcentagem, ele será 1 ou 100% quando o Time.deltatime for igual ao tempodesumico
+            corTexto.a = Mathf.Lerp(1, 0, contador); // Mathf.Lerp cria uma interpolação entre dois valores de float baseado na porcentagem de um float (contador)
+            textoParaSumir.color = corTexto; // textoparasumir recebe a cor nova
+            if (textoParaSumir.color.a <=0)
+            {
+                textoParaSumir.gameObject.SetActive(false); //desativa o texto
+            }
+            yield return null; // while pede um yield return null para que ele espere o proximo frame pra ir fazendo um pouquinho a cada frame e não tudo de uma vez
+        }
+
+    }
 }
