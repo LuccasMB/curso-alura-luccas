@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI; // pra usar navmesh
+using UnityEngine.AI; // pra usar navmesh
+using UnityEngine.UI; // pra usar canvas
 
 
 //script linkado ao chefe
@@ -17,6 +17,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     public AudioClip SomDeMorteChefe; // variavel para armazenar o som de morte do chefe
     public bool ChefeNaoTomarTiro; // variavel criada com o intuito de fazer que o chefe não continue tendo colisoes entre bala e chefe durante a animação de morte do chefe
     public GameObject KitMedicoPrefab; //variavel que receberá o kitmedic no inspector
+    public Slider SliderVidaChefe; // variavel pra receber o slide da vida do chefe la no inspector
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class ControlaChefe : MonoBehaviour, IMatavel
         animacaoChefe = GetComponent<AnimacaoPersonagem>(); //declarando animacaoChefe
         movimentoChefe = GetComponent<MovimentoPersonagem>(); // declarando movimento chefe
         ChefeNaoTomarTiro = false; // quando o chefe é iniciado nós marcamos a variavel como falsa para que o chefe possa tomar tiro, que aconteça colisao entre a bala e o chefe
+        SliderVidaChefe.maxValue = statusChefe.VidaInicial; //já seta o valor maximo da slider como o valor da vida inicial do chefe
+        AtualizarInterface (); // atualiza a interface com a vida do chefe senão o valor maximo muda, mas o valor atual n muda
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     public void TomarDano(int dano)
     {
         statusChefe.Vida -= dano;
+        AtualizarInterface (); //atualiza a interface para atualizar o dano do chefe no slider
         if(statusChefe.Vida <= 0)
         {
             ChefeNaoTomarTiro = true; // define a variavel para que o chefe não tome mais tiro depois de morrer
@@ -84,6 +88,11 @@ public class ControlaChefe : MonoBehaviour, IMatavel
      void AnimacaoMorreu()
     {
         movimentoChefe.Morrer(); // inicia a movimentacao de sumir do mapa
+    }
+
+    void AtualizarInterface ()
+    {
+        SliderVidaChefe.value = statusChefe.Vida; //muda a slider de acordo com a vida do chefe
     }
 
 }
