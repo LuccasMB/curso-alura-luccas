@@ -19,12 +19,6 @@ public class GeradorChefe : MonoBehaviour
         scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface; // uma variante pra usar o find sem ser via tag // a gente fala o tipo e depois diz como criaremos o objeto
         jogador = GameObject.FindWithTag("Jogador").transform; // definindo jogador com o transform do jogador
     }
-    void OnDrawGizmos () // esse método é só pra criar uns gizmos vermelhos no gerador de chefe
-    {
-        Gizmos.color = Color.red; // falo que meus gizmos irá possuir cor vermelho
-        Gizmos.DrawWireSphere(transform.position, 5); // 5 para desenhar o gizmos com o raio 5
-    }
-
     // Update is called once per frame
     void Update()
     {
