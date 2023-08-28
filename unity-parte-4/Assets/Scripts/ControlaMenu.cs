@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,11 +17,23 @@ public class ControlaMenu : MonoBehaviour
 
     public void JogarJogo()
     {
-        SceneManager.LoadScene("game"); // da load na cena "game"
+        StartCoroutine(MudarCena("game")); // manda dar load na cena game
+    }
+
+    IEnumerator MudarCena (String name)
+    {
+        yield return new WaitForSeconds(0.3f); //esperando um tempo pra mudar de cena de 0,3s
+        SceneManager.LoadScene(name); // da load na cena 
     }
 
     public void SairDoJogo()
     {
+        StartCoroutine(Sair()); // chama a coroutine de sair
+    }
+
+    IEnumerator Sair()
+    {
+        yield return new WaitForSecondsRealtime(0.3f); //esperando um tempo de 0,3s para sair // Realtime é independente de o jogo estar pausado, o que acontece no game over
         Application.Quit(); // Sair do Jogo
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // faz sair do jogo quando clicar em sair no editor da unity
