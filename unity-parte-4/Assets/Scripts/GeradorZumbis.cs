@@ -12,7 +12,6 @@ public class GeradorZumbis : MonoBehaviour {
     private float distanciaDeGeracao = 3; //raio da esfera de geração randomica de zumbi
     private float distanciaDoJogadorParaGeracao = 20; // essa variavel é pra não nascer zumbi numa distancia menor que 20 com o jogador 
     private GameObject jogador; // variavel para receber o gameobject do jogador
-
     private int quantidadeMaximaDeZumbisVivos = 2; // esse numéro é por gerador
     private int quantidadeDeZumbisVivos; //quantidaded de zumbis vivos atual
     private float tempoProximoAumentoDeDificuldade = 30; // a cada 30 segundos vai aumentar a dificuldade
