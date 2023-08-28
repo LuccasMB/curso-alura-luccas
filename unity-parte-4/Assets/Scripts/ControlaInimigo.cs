@@ -5,34 +5,27 @@ using UnityEngine;
 
 public class ControlaInimigo : MonoBehaviour, IMatavel
 {
-
     public GameObject Jogador; //cria uma variavel pra receber o gameobject do jogador
     // public float Velocidade = 5; // seta a velocidade do zumbi //com o script Status, este atributo será tratado lá
     // private Rigidbody rigidbodyInimigo; // variavel rigidbody pra não precisar ficar escrevendo getcomponent toda hr // parou de ser necessario por causa da classe movimentopersonagem
     // private Animator animatorInimigo; // variavel animator pra nao precisar ficar escrevendo getcomponent todda hr // parou de ser necessario por causa da classe AnimacaoPersonagem
     private int dano; //variavel para passar o dano que o zumbi dará ao jogador
-
     private MovimentoPersonagem movimentoInimigo; // criando uma variavel da classe criada no script movimento personagem pra poder usar os métodos criados nela
     private AnimacaoPersonagem animacaoInimigo;  // criando uma variavel da classe criada no script animacao personagem pra poder usar os métodos criados nela
     private Status statusInimigo; // criando uma variavel da classe criada no script status pra poder usar os métodos criados nela
-
     public AudioClip SomDeMorte; // variavel para armazenar o som de morte do zumbi
     private Vector3 posicaoAleatoria; // variavel para auxiliar o zumbi a ficar vagando
     private Vector3 direcao; // variavel para indicar a direcao que o zumbi vai andar
-
     private float contadorVagar; // contador para contar o tempo que o zumbi esta vagando
     private float tempoEntrePosicoesAleatorias = 4; // vai demorar 4 segundos para que mude a posicao aleatoria
     private float porcentagemGerarKitMedico = 0.1f; // porcentagem de gerar de 10% //tem que colocar o f para o código saber que o numero quebrado é float
-
     public GameObject KitMedicoPrefab; //variavel para receber o prefab do kitmedico no inspector
-
     private ControlaInterface scriptControlaInterface; // CRIANDO UMA VARIAVEL DO TIPO DA CLASSE QUE CRIAMOS CONTROLA INTERFACE
-    
     [HideInInspector]
     public bool ZumbiNaoTomarTiro; // variavel criada com o intuito de fazer que o zumbi não continue tendo colisoes entre bala e zumbi durante a animação de morte do zumbi
-    
     [HideInInspector]
     public GeradorZumbis meuGerador; //// CRIANDO UMA VARIAVEL DO TIPO DA CLASSE QUE CRIAMOS gerador zumbis // não precisa aparecer no inspector
+    public GameObject ParticulaSangueZumbi; //variavel pra receber o gameobject da particula sangue do zumbi no inspector no prefab do zumbi
 
 
 	// Use this for initialization
@@ -146,6 +139,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
             ZumbiNaoTomarTiro = true; // define a variavel para que o zumbi não tome mais tiro depois de morrer
             Morrer();
         }
+    }
+
+    public void ParticulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(ParticulaSangueZumbi, posicao, rotacao); // vai instanciar o objeto com uma posicao e uma rotação
     }
 
     public void Morrer()

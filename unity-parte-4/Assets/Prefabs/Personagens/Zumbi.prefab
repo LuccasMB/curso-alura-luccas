@@ -674,6 +674,8 @@ MonoBehaviour:
     type: 3}
   ZumbiNaoTomarTiro: 0
   meuGerador: {fileID: 0}
+  ParticulaSangueZumbi: {fileID: 3099007705162013546, guid: cbf62e56af0410548889b650480cbd38,
+    type: 3}
 --- !u!54 &54163392757231022
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -20,6 +20,8 @@ public class ControlaChefe : MonoBehaviour, IMatavel
     public Slider SliderVidaChefe; // variavel pra receber o slide da vida do chefe la no inspector
     public Image ImagemSlider; //variavel que irá receber o fill do slider lá no inspector
     public Color CorDaVidaMaxima, CorDaVidaMinima; //definindo duas váriaves para receber as cores da vida // já vem como preta tem que mudar no inspector
+    public GameObject ParticulaSangueChefe; //variavel pra receber o gameobject da particula sangue do chefe no inspector no prefab do chefe
+
 
 
     // Start is called before the first frame update
@@ -77,6 +79,11 @@ public class ControlaChefe : MonoBehaviour, IMatavel
             ChefeNaoTomarTiro = true; // define a variavel para que o chefe não tome mais tiro depois de morrer
             Morrer();  
         }
+    }
+
+        public void ParticulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(ParticulaSangueChefe, posicao, rotacao); // vai instanciar o objeto com uma posicao e uma rotação
     }
 
     public void Morrer()

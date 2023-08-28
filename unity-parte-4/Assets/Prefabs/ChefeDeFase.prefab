@@ -1068,6 +1068,8 @@ MonoBehaviour:
   ImagemSlider: {fileID: 4112994972975111079}
   CorDaVidaMaxima: {r: 0.34117648, g: 1, b: 0, a: 1}
   CorDaVidaMinima: {r: 1, g: 0.32941177, b: 0.32156864, a: 1}
+  ParticulaSangueChefe: {fileID: 3099007705162013546, guid: cbf62e56af0410548889b650480cbd38,
+    type: 3}
 --- !u!1 &7984745334537397811
 GameObject:
   m_ObjectHideFlags: 0
