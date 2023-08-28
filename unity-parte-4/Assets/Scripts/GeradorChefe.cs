@@ -9,6 +9,7 @@ public class GeradorChefe : MonoBehaviour
     private float tempoEntreGeracoes = 10; // de 60s em 60ss nasce um chefe
     public GameObject ChefePrefeb; // variavel para definir o prefab do chefe la no inspector
     private ControlaInterface scriptControlaInterface; // variavel para receber a classe de controlainterface
+   
 
 
     // Start is called before the first frame update
@@ -17,6 +18,11 @@ public class GeradorChefe : MonoBehaviour
         tempoParaProximaGeracao = tempoEntreGeracoes; //primeira geração acontece quando tiver um ciclo de tempoentregeracoes
         scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface; // uma variante pra usar o find sem ser via tag // a gente fala o tipo e depois diz como criaremos o objeto
 
+    }
+    void OnDrawGizmos () // esse método é só pra criar uns gizmos vermelhos
+    {
+        Gizmos.color = Color.red; // falo que meus gizmos irá possuir cor vermelho
+        Gizmos.DrawWireSphere(transform.position, 5); // 3o para desenhar o gizmos com o raio 5
     }
 
     // Update is called once per frame
