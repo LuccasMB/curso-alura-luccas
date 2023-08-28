@@ -3060,6 +3060,7 @@ GameObject:
   - component: {fileID: 136019490977274122}
   - component: {fileID: 2223691002160692356}
   - component: {fileID: 7029615729439992594}
+  - component: {fileID: 2929930605177183635}
   m_Layer: 0
   m_Name: Personagens
   m_TagString: Jogador
@@ -3139,16 +3140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e845a02ca95e5748b3310986a47c5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidade: 10
-  MascaraChao:
-    serializedVersion: 2
-    m_Bits: 256
   TextoGameOver: {fileID: 0}
   scriptControlaInterface: {fileID: 0}
-  Vida: 100
-  Audio: {fileID: 0}
   SomDeDano: {fileID: 8300000, guid: 8cf8da17a55e4104c80e2a15f1fd98e3, type: 3}
-  SomGameOver: {fileID: 8300000, guid: 9195694df5c7ff14aa6494e897fe802b, type: 3}
+  statusJogador: {fileID: 0}
 --- !u!114 &114240463659201816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3226,6 +3221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a0fe34ab5c0334eb90e908ed2e6603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posicaoMiraJogador: {fileID: 1440704372687542041}
 --- !u!114 &7029615729439992594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3238,6 +3234,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71cb75a45b8ae248a5163df2b734632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2929930605177183635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560dceceafa5ea947b03166d2c16f85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VidaInicial: 100
+  Vida: 0
+  Velocidade: 10
 --- !u!1 &1938851689004064
 GameObject:
   m_ObjectHideFlags: 0

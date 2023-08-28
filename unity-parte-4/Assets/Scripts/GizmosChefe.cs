@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//este script está linkado as posições de criacao do chefe lá no inspector
+
 public class GizmosChefe : MonoBehaviour
 {
     void OnDrawGizmos () // esse método é só pra criar uns gizmos vermelhos no gerador de chefe
